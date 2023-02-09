@@ -12,5 +12,6 @@ export const authCodeFlowConfig: AuthConfig = {
     disablePKCE: false,
     oidc: false,
     loginUrl: "https://accounts.spotify.com/authorize",
-    userinfoEndpoint: "https://api.spotify.com/v1/me"
+    userinfoEndpoint: "https://api.spotify.com/v1/me",
+    logoutUrl: window.location.origin + "/redirect",
 };
