@@ -11,17 +11,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./redirect.component.scss']
 })
 export class RedirectComponent implements OnInit {
-  constructor(private oauthService: OAuthService, private router: Router) { }
+
+  protected needsToLogin = true;
+
+  constructor(private oauthService: OAuthService, private router: Router) {
+  }
+
+
 
   ngOnInit(): void {
     if (sessionStorage.getItem("redirected") === "true") {
-      sessionStorage.setItem("redirected", "false")
-      this.oauthService.initLoginFlow();
+      this.needsToLogin = true;
     }
     else {
+      this.needsToLogin = false;
+
       let path = decodeURI(sessionStorage.getItem("path") || "");
 
-      if (path === "/redirect") {
+      if (path.startsWith("/redirect")) {
         path = "";
       }
 
@@ -31,5 +38,10 @@ export class RedirectComponent implements OnInit {
           sessionStorage.setItem("redirected", "true");
         });
     }
+  }
+
+  public login() {
+    sessionStorage.setItem("redirected", "false");
+    this.oauthService.initLoginFlow();
   }
 }
