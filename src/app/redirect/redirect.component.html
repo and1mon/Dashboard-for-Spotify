@@ -1,1 +1,7 @@
-<p>redirect works!</p>
+<main *ngIf="needsToLogin === true">
+    <h1>Login with your Spotify account to see your personal statistics!</h1>
+    <button (click)="login()">Login</button>
+    <div>
+        <!---TODO Zufällige Auswahl an Artists durchscrollen bei Login Page----->
+    </div>
+</main>

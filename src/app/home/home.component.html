@@ -1,1 +1,24 @@
-<p>home works!</p>
+<main>
+    <h1>Your favorites of the last 4 weeks</h1>
+    <div id="mainSection">
+        <section>
+            <h2>Tracks</h2>
+            <div>
+                <div *ngFor="let track of tracks, let i = index" class="track">
+                    <p>{{track.name}}</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Artists</h2>
+            <div class="scrollRow">
+                <div *ngFor="let artist of artists, let i = index" class="artist">
+                    <img src="{{ artist.images[0].url }}" *ngIf="artist.images">
+                    <p><strong>#{{i+1}}</strong></p>
+                    <p id="artist-name">{{artist.name}}</p>
+                </div>
+            </div>
+        </section>
+        <section>Songs History</section>
+    </div>
+</main>

@@ -3,9 +3,9 @@ import { AuthConfig } from 'angular-oauth2-oidc';
 export const authCodeFlowConfig: AuthConfig = {
     issuer: 'https://accounts.spotify.com',
     redirectUri: window.location.origin + "/redirect",
-    clientId: '9e49965bc899423a99adf1dc5f0e8d2d',
+    clientId: '',
     responseType: 'code',
-    scope: "user-read-private user-read-email",
+    scope: "user-top-read",
     showDebugInformation: true,
     timeoutFactor: 0.01,
     tokenEndpoint: "https://accounts.spotify.com/api/token",
