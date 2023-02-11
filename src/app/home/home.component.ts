@@ -19,13 +19,25 @@ export class HomeComponent implements OnInit, OnDestroy {
   tracks?: TrackObject[];
   private trackSubscription: any;
 
+
+
   constructor(private spotifyService: SpotifyService) {
 
   }
 
   ngOnInit(): void {
     this.artistSubscription = this.spotifyService.getUserTopArtists("long_term", 50).subscribe(data => this.artists = data.items as ArtistObject[]);
-    this.trackSubscription = this.spotifyService.getUserTopTracks("long_term", 50).subscribe(data => this.tracks = data.items as TrackObject[]);
+
+    this.trackSubscription = this.spotifyService.getUserTopTracks("long_term", 50).subscribe((data) => {
+      this.tracks = data.items as TrackObject[];
+
+      this.tracks.forEach(track => {
+        if (track.album !== undefined) {
+          track.album.images[0];
+        }
+
+      });
+    });
   }
 
   ngOnDestroy(): void {
