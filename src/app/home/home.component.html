@@ -3,8 +3,9 @@
     <div id="mainSection">
         <section>
             <h2>Tracks</h2>
-            <div>
+            <div class="scrollRow">
                 <div *ngFor="let track of tracks, let i = index" class="track">
+                    <img *ngIf="track.album" src="{{track.album.images[0].url}}">
                     <p>{{track.name}}</p>
                 </div>
             </div>
@@ -13,7 +14,7 @@
             <h2>Artists</h2>
             <div class="scrollRow">
                 <div *ngFor="let artist of artists, let i = index" class="artist">
-                    <img src="{{ artist.images[0].url }}" *ngIf="artist.images">
+                    <img *ngIf="artist.images" src="{{ artist.images[0].url }}">
                     <p><strong>#{{i+1}}</strong></p>
                     <p id="artist-name">{{artist.name}}</p>
                 </div>
