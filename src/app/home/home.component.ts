@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   tracks?: TrackObject[];
   private trackSubscription: any;
 
+  trackArtists: ArtistObject[][] = [];
+
 
 
   constructor(private spotifyService: SpotifyService) {
@@ -26,9 +28,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.artistSubscription = this.spotifyService.getUserTopArtists("long_term", 50).subscribe(data => this.artists = data.items as ArtistObject[]);
+    this.artistSubscription = this.spotifyService.getUserTopArtists("short_term", 10).subscribe(data => this.artists = data.items as ArtistObject[]);
 
-    this.trackSubscription = this.spotifyService.getUserTopTracks("long_term", 50).subscribe((data) => {
+    this.trackSubscription = this.spotifyService.getUserTopTracks("short_term", 10).subscribe((data) => {
       this.tracks = data.items as TrackObject[];
 
       this.tracks.forEach(track => {
@@ -36,6 +38,15 @@ export class HomeComponent implements OnInit, OnDestroy {
           track.album.images[0];
         }
 
+        if (track.artists !== undefined) {
+          let tmpArtists: ArtistObject[] = [];
+
+          track.artists.forEach(artist => {
+            tmpArtists.push(artist);
+          })
+
+          this.trackArtists.push(tmpArtists);
+        }
       });
     });
   }

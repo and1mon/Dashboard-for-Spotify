@@ -1,12 +1,33 @@
 <main>
-    <h1>Your favorites of the last 4 weeks</h1>
+    <h1>Favorites of the month</h1>
     <div id="mainSection">
+        <p class="pageDescription">These tracks and artists are in your current Top 10!</p>
         <section>
             <h2>Tracks</h2>
             <div class="scrollRow">
-                <div *ngFor="let track of tracks, let i = index" class="track">
-                    <img *ngIf="track.album" src="{{track.album.images[0].url}}">
-                    <p>{{track.name}}</p>
+                <div *ngFor="let track of tracks, let trackIndex = index" class="track">
+                    <div class="rank">
+                        <p><strong>{{trackIndex+1}}</strong></p>
+
+                    </div>
+                    <img *ngIf="track.album" src="{{track.album.images[0].url}}" alt="Album cover">
+                    <div class="trackInfoSection">
+                        <p id="track-name">{{track.name}}</p>
+                        <p id="track-artist">
+                            <ng-container *ngFor="let artist of trackArtists[trackIndex], let artistIndex = index">
+                                <ng-container
+                                    *ngIf=" artistIndex < trackArtists[trackIndex].length - 1, else elseBlock">
+                                    {{artist.name}},
+                                </ng-container>
+                                <ng-template #elseBlock>
+                                    {{artist.name}}
+                                </ng-template>
+                            </ng-container>
+                        </p>
+                        <ng-template #elseBlock>
+                            <p>No artists found.</p>
+                        </ng-template>
+                    </div>
                 </div>
             </div>
         </section>
