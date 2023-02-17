@@ -1,13 +1,3 @@
-h1 {
-    text-align: center;
-    line-height: 1.25;
-    padding: 8px;
-}
-
-h2 {
-    text-align: left;
-}
-
 img {
     object-fit: cover;
     margin-bottom: auto;
@@ -63,24 +53,6 @@ p {
 
 .trackInfoSection p {
     margin: 0 10px;
-}
-
-.artist {
-    width: 25vw;
-    max-width: 300px;
-    height: 45vw;
-    max-height: 500px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.artist img {
-    width: 25vw;
-    max-width: 300px;
-    height: 25vw;
-    max-height: 300px;
 }
 
 .track-name {

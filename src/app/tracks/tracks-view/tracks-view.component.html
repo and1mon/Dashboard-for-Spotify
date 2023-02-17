@@ -1,0 +1,26 @@
+<div class="scrollRow">
+    <div *ngFor="let track of tracks, let trackIndex = index" class="track">
+        <div class="rank">
+            <p><strong>{{trackIndex+1}}</strong></p>
+
+        </div>
+        <img *ngIf="track.album" src="{{track.album.images[0].url}}" alt="Album cover" id="song-cover">
+        <div class="trackInfoSection">
+            <p class="track-name">{{track.name}}</p>
+            <p class="track-artist">
+                <ng-container *ngFor="let artist of trackArtists[trackIndex], let artistIndex = index">
+                    <ng-container *ngIf=" artistIndex < trackArtists[trackIndex].length - 1, else elseBlock">
+                        {{artist.name}},
+                    </ng-container>
+                    <ng-template #elseBlock>
+                        {{artist.name}}
+                    </ng-template>
+                </ng-container>
+            </p>
+            <ng-template #elseBlock>
+                <p>No artists found.</p>
+            </ng-template>
+        </div>
+        <img src="assets/img/stats_icon.svg" alt="Pfeil" class="statsIcon">
+    </div>
+</div>

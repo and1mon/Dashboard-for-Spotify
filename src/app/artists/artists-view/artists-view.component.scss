@@ -1,0 +1,33 @@
+img {
+    object-fit: cover;
+    margin-bottom: auto;
+}
+
+p {
+    margin: auto 0;
+}
+
+.scrollRow {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.artist {
+    width: 25vw;
+    max-width: 300px;
+    height: 45vw;
+    max-height: 500px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.artist img {
+    width: 25vw;
+    max-width: 300px;
+    height: 25vw;
+    max-height: 300px;
+}
