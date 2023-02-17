@@ -9,9 +9,12 @@ import { OAuthService, provideOAuthClient } from 'angular-oauth2-oidc';
 import { provideRouter, Router } from '@angular/router';
 import { ROUTES } from './app/app-routes';
 import { SpotifyService } from './app/services/spotify.service';
-import { APP_INITIALIZER } from '@angular/core';
+import { APP_INITIALIZER, importProvidersFrom } from '@angular/core';
 import { filter, Observable } from 'rxjs';
 import { authCodeFlowConfig } from './app/auth.config';
+import { provideStore, StoreModule } from '@ngrx/store';
+import { artistsReducer } from './app/state/artists/artists.reducer';
+import { tracksReducer } from './app/state/tracks/tracks.reducer';
 
 const initializeOAuth = (oauthService: OAuthService, router: Router) => () => {
   return new Promise(resolve => {
@@ -47,12 +50,12 @@ bootstrapApplication(AppComponent, {
       multi: true,
       deps: [OAuthService, Router]
     },
+    provideStore({ artists: artistsReducer, tracks: tracksReducer }),
     SpotifyService,
     OAuthService,
     Router,
     provideHttpClient(),
     provideOAuthClient(),
     provideRouter(ROUTES),
-
   ]
 });
