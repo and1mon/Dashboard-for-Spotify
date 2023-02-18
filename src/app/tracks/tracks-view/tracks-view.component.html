@@ -7,9 +7,9 @@
         <img *ngIf="track.album" src="{{track.album.images[0].url}}" alt="Album cover" id="song-cover">
         <div class="trackInfoSection">
             <p class="track-name">{{track.name}}</p>
-            <p class="track-artist">
-                <ng-container *ngFor="let artist of trackArtists[trackIndex], let artistIndex = index">
-                    <ng-container *ngIf=" artistIndex < trackArtists[trackIndex].length - 1, else elseBlock">
+            <p class="track-artist" *ngIf="track.artists !== undefined">
+                <ng-container *ngFor="let artist of track.artists, let artistIndex = index">
+                    <ng-container *ngIf=" artistIndex < track.artists.length - 1, else elseBlock">
                         {{artist.name}},
                     </ng-container>
                     <ng-template #elseBlock>
