@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import { SpotifyService } from "../../services/spotify.service";
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { loadTracks, loadTracksFailure, loadTracksSuccess } from "./tracks.actions";
-import { catchError, filter, from, map, mergeMap, of, switchMap, withLatestFrom } from "rxjs";
+import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
+import { loadTracksFailure, loadTracksSuccess, loadTracks } from "./tracks.actions";
+import { catchError, combineLatest, filter, from, map, mergeMap, of, switchMap, tap, withLatestFrom } from "rxjs";
 import { Store } from "@ngrx/store";
 import { tracksReducer } from "./tracks.reducer";
-import { selectAllTracks } from "./tracks.selector";
+import { selectAllTracksShortTerm } from "./tracks.selector";
 import { AppState } from "../app.state";
 
 @Injectable()
@@ -19,19 +19,22 @@ export class TracksEffects {
         this.actions$.pipe(
             ofType(loadTracks),
             withLatestFrom(this.store$),
-            filter(([action, storeState]) => 10 - storeState.tracks.tracks.length > 0),
-            mergeMap(() =>
-                this.spotifyService.getUserTopTracks("short_term", 10).pipe(
+            concatLatestFrom(([action, storeState]) => of(this.spotifyService.getOffset(action.timeRange, storeState))),
+            filter(([[action, storeState], offset]) => {
+                return action.amount - offset > 0;
+            }),
+            mergeMap(([[action, storeState], offset]) => {
+                return this.spotifyService.getUserTopTracks(action.timeRange, action.amount - offset, offset).pipe(
                     map((fetchedTracks) =>
-                        loadTracksSuccess({ tracks: fetchedTracks })
+                        loadTracksSuccess({ tracks: fetchedTracks, timeRange: action.timeRange })
                     ),
                     catchError((error) => of(loadTracksFailure({ error: error })))
                 )
+            }
             )
         )
     )
-
-
 }
+
 
 
