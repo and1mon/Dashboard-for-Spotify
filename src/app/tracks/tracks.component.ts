@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TracksViewComponent } from './tracks-view/tracks-view.component';
-import { SpotifyService } from '../services/spotify.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../state/app.state';
-import { selectAllTracks } from '../state/tracks/tracks.selector';
+import { selectAllTracksShortTerm } from '../state/tracks/tracks.selector';
 import { loadTracks } from '../state/tracks/tracks.actions';
 
 @Component({
@@ -16,11 +15,14 @@ import { loadTracks } from '../state/tracks/tracks.actions';
 })
 export class TracksComponent implements OnInit {
 
-  tracks$ = this.store.select(selectAllTracks);
+  @Input()
+  amount = 10;
+
+  tracks$ = this.store.select(selectAllTracksShortTerm(this.amount));
 
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.store.dispatch(loadTracks());
+    this.store.dispatch(loadTracks({ amount: this.amount, timeRange: "short_term" }));
   }
 }
