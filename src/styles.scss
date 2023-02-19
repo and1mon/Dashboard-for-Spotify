@@ -27,3 +27,14 @@ body {
     color: #f5f5f5;
     font-family: Poppins, Arial, sans-serif;
 }
+
+:root {
+    --text-main: #fff;
+    --text-secondary: #d3d3d3;
+    --background-color: #e5e5e5;
+    --card-background: #262626;
+    --contrast-color: black;
+    --accent-color: greenyellow;
+
+    color-scheme: light;
+}

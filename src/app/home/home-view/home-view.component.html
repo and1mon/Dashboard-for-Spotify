@@ -1,0 +1,49 @@
+<main>
+    <h1>Personal Dashboard</h1>
+    <div id="mainSection">
+        <p class="pageDescription">Take insight into your latest activities and preferences!</p>
+        <section>
+            <h2>Artists</h2>
+            <div class="scrollRow">
+                <div *ngFor="let artist of artists, let i = index" class="artist">
+                    <div class="rel-container">
+                        <img *ngIf="artist.images" src="{{ artist.images[0].url }}">
+                        <p class="artist-rank">{{i+1}}</p>
+                    </div>
+                    <p class="artist-name">{{artist.name}}</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Tracks</h2>
+            <div class="trackList">
+                <div *ngFor="let track of tracks, let trackIndex = index" class="track">
+                    <div class="track-rank">
+                        <p>{{trackIndex+1}}</p>
+                    </div>
+                    <img *ngIf="track.album" src="{{track.album.images[0].url}}" alt="Album cover" class="track-cover">
+                    <div class="trackInfoSection">
+                        <p class="track-name">{{track.name}}</p>
+                        <p class="track-artist" *ngIf="track.artists !== undefined">
+                            <ng-container *ngFor="let artist of track.artists, let artistIndex = index">
+                                <ng-container *ngIf=" artistIndex < track.artists.length - 1, else elseBlock">
+                                    {{artist.name}},
+                                </ng-container>
+                                <ng-template #elseBlock>
+                                    {{artist.name}}
+                                </ng-template>
+                            </ng-container>
+                        </p>
+                        <ng-template #elseBlock>
+                            <p>No artists found.</p>
+                        </ng-template>
+                    </div>
+                    <img src="assets/img/stats_icon.svg" alt="Pfeil" class="statsIcon">
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Playback History</h2>
+        </section>
+    </div>
+</main>

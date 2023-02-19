@@ -1,15 +1,5 @@
-<main>
-    <h1>Favorites of the month</h1>
-    <div id="mainSection">
-        <p class="pageDescription">These tracks and artists are in your current Top 10!</p>
-        <section>
-            <h2>Tracks</h2>
-            <app-tracks></app-tracks>
-        </section>
-        <section>
-            <h2>Artists</h2>
-            <app-artists></app-artists>
-        </section>
-        <section>Songs History</section>
-    </div>
-</main>
+<ng-container *ngIf="tracks$ | async as tracks">
+    <ng-container *ngIf="artists$ | async as artists">
+        <app-home-view [artists]="artists" [tracks]="tracks"></app-home-view>
+    </ng-container>
+</ng-container>
