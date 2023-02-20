@@ -8,12 +8,11 @@ button {
     color: #e6e6e6;
     border: none;
     border-radius: 4px;
+    font-size: 16px;
 }
 
-.appIcon {
-    background-color: rgb(0, 0, 0);
-    padding: 10px;
-    width: 30px;
+#app-title {
+    font-weight: 500;
 }
 
 #header-container {
@@ -21,4 +20,17 @@ button {
     justify-content: space-between;
     align-items: center;
     padding: 0 3vw;
+}
+
+@media screen and (min-width: 1600px) {
+
+    button {
+        padding: 16px;
+        border-radius: 4px;
+        font-size: 20px;
+    }
+
+    #app-title {
+        font-size: 20px;
+    }
 }

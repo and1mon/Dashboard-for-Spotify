@@ -30,29 +30,28 @@ section {
     font-weight: 500;
 }
 
-.trackList {
-    display: flex;
-    gap: .5rem;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
 .scrollRow {
-    display: flex;
-    gap: .5rem;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow-x: scroll;
+    display: grid;
+    grid-auto-columns: minmax(120px, 35%);
+    grid-auto-flow: column;
+    grid-gap: .5rem;
+    overflow-x: auto;
     width: calc(100% + 16px);
     margin-right: -16px;
 }
 
+.trackList {
+    display: grid;
+    gap: .5rem;
+    grid-template-columns: 100%;
+    grid-gap: 0.5rem;
+}
+
 .track {
-    flex-basis: calc(100%);
-    width: calc(100% - 16px);
+    width: 100%;
     height: 8vw;
     min-height: 50px;
-    max-height: 100px;
+    max-height: 75px;
     display: flex;
     border-radius: 10px;
     background-color: var(--card-background);
@@ -123,7 +122,7 @@ section {
 }
 
 .artist {
-    flex-basis: 35%;
+    flex-basis: 100%;
     min-width: 120px;
     flex-grow: 0;
     flex-shrink: 0;
@@ -178,4 +177,81 @@ section {
     flex-direction: column;
     align-items: center;
     margin: 0 16px;
+}
+
+@media screen and (min-width: 768px) {
+    .trackList {
+        grid-auto-flow: column;
+        grid-template-rows: repeat(5, auto);
+        grid-template-columns: repeat(2, 49%);
+        justify-content: space-between;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .trackList {
+        grid-auto-flow: column;
+        grid-template-rows: repeat(2, auto);
+        grid-template-columns: repeat(5, 19%);
+        justify-content: space-between;
+    }
+
+    .scrollRow {
+        width: 100%;
+        margin: 0;
+    }
+
+    .artist-name,
+    .track-name {
+        font-size: 18px;
+    }
+
+    .track-artist {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+
+    .pageDescription {
+        font-size: 24px;
+    }
+
+    .artist-rank {
+        width: 3rem;
+        height: 3rem;
+        line-height: 3rem;
+        font-size: 20px;
+    }
+
+    .track-rank {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .scrollRow {
+        grid-template-rows: repeat(1, auto);
+    }
+}
+
+@media screen and (min-width: 2560px) {
+
+    .artist-name,
+    .track-name {
+        font-size: 20px;
+    }
+
+    .track-artist {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 64px;
+    }
+
+    .pageDescription {
+        font-size: 32px;
+    }
 }
