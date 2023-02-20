@@ -1,10 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SpotifyService } from '../services/spotify.service';
-import { ArtistObject, TrackObject } from 'src/libs/openapi';
-import { Subscription } from 'rxjs';
-import { ArtistsComponent } from '../artists/artists.component';
-import { TracksComponent } from '../tracks/tracks.component';
 import { HomeViewComponent } from './home-view/home-view.component';
 import { Store } from '@ngrx/store';
 import { AppState } from '../state/app.state';
@@ -12,6 +8,8 @@ import { selectAllTracksShortTerm } from '../state/tracks/tracks.selector';
 import { loadTracks } from '../state/tracks/tracks.actions';
 import { selectAllArtistsShortTerm } from '../state/artists/artists.selector';
 import { loadArtists } from '../state/artists/artists.actions';
+import { loadHistory } from '../state/history/history.actions';
+import { selectAllHistoryEntries } from '../state/history/history.selector';
 
 @Component({
   selector: 'app-home',
@@ -26,12 +24,14 @@ export class HomeComponent implements OnInit {
 
   tracks$ = this.store.select(selectAllTracksShortTerm(this.amount));
   artists$ = this.store.select(selectAllArtistsShortTerm(this.amount));
+  history$ = this.store.select(selectAllHistoryEntries(this.amount));
 
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>, private spotify: SpotifyService) { }
 
   ngOnInit(): void {
     this.store.dispatch(loadTracks({ amount: this.amount, timeRange: "short_term" }));
     this.store.dispatch(loadArtists({ amount: this.amount, timeRange: "short_term" }));
+    this.store.dispatch(loadHistory({ amount: this.amount }));
   }
 }

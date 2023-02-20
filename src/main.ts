@@ -16,6 +16,7 @@ import { provideStore, StoreModule } from '@ngrx/store';
 import { artistsReducer } from './app/state/artists/artists.reducer';
 import { tracksReducer } from './app/state/tracks/tracks.reducer';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { historyReducer } from './app/state/history/history.reducer';
 
 const initializeOAuth = (oauthService: OAuthService, router: Router) => () => {
   return new Promise(resolve => {
@@ -51,7 +52,11 @@ bootstrapApplication(AppComponent, {
       multi: true,
       deps: [OAuthService, Router]
     },
-    provideStore({ artists: artistsReducer, tracks: tracksReducer }),
+    provideStore({
+      artists: artistsReducer,
+      tracks: tracksReducer,
+      history: historyReducer
+    }),
     provideStoreDevtools({
       maxAge: 25, // Retains last 25 states
       logOnly: !isDevMode(), // Restrict extension to log-only mode

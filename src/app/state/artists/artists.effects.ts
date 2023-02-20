@@ -17,14 +17,14 @@ export class ArtistsEffects {
         this.actions$.pipe(
             ofType(loadArtists),
             withLatestFrom(this.store$),
-            concatLatestFrom(([action, storeState]) => of(this.spotifyService.getOffset(action.timeRange, storeState))),
+            concatLatestFrom(([action, storeState]) => of(this.spotifyService.getOffsetTracks(action.timeRange, storeState))),
             filter(([[action, storeState], offset]) => {
-                return action.amount - storeState.artists.artistsShortTerm.length > 0;
+                return action.amount - offset > 0;
             }),
             mergeMap(([[action, storeState], offset]) => {
-                return this.spotifyService.getUserTopArtists(action.timeRange, action.amount).pipe(
-                    map((data) =>
-                        loadArtistsSuccess({ artists: data, timeRange: action.timeRange })
+                return this.spotifyService.getUserTopArtists(action.timeRange, action.amount - offset, offset).pipe(
+                    map((fetchedArtists) =>
+                        loadArtistsSuccess({ artists: fetchedArtists, timeRange: action.timeRange })
                     ),
                     catchError((error) => of(loadArtistsFailure({ error: error })))
                 )
