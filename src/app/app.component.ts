@@ -13,5 +13,5 @@ import { ApiModule } from 'src/libs/openapi';
   imports: [CommonModule, RedirectComponent, RouterModule, ApiModule, HeaderComponent]
 })
 export class AppComponent {
-  title = 'spotistats';
+  title = 'UserDash - Stats for Spotify';
 }
