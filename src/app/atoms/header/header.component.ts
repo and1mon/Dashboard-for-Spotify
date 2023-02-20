@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OAuthService } from 'angular-oauth2-oidc';
 
@@ -9,9 +9,15 @@ import { OAuthService } from 'angular-oauth2-oidc';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+
+  isLoggedIn = false;
 
   constructor(private oauth: OAuthService) { }
+
+  ngOnInit(): void {
+    this.isLoggedIn = this.oauth.hasValidAccessToken();
+  }
 
   public logout(): void {
     this.oauth.logOut();

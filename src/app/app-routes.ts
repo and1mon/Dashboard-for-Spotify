@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { RedirectComponent } from './redirect/redirect.component';
 import { ArtistsEffects } from './state/artists/artists.effects';
 import { TracksEffects } from './state/tracks/tracks.effects';
+import { HistoryEffects } from './state/history/history.effects';
 
 export const ROUTES: Routes = [
   {
@@ -18,7 +19,7 @@ export const ROUTES: Routes = [
   {
     path: "home",
     loadComponent: () => import('./home/home.component').then(mod => mod.HomeComponent),
-    providers: [provideEffects(ArtistsEffects, TracksEffects)],
+    providers: [provideEffects(ArtistsEffects, TracksEffects, HistoryEffects)],
   },
   {
     path: "top",
