@@ -1,0 +1,29 @@
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--card-background);
+    color: var(--text-secondary);
+    gap: 8px;
+    padding: 8px;
+}
+
+p {
+    margin: 0;
+    font-size: 12px;
+}
+
+a {
+    color: var(--text-secondary);
+}
+
+img {
+    width: 70px;
+    padding: 12px 8px;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+}

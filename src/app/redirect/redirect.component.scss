@@ -10,6 +10,10 @@ p {
     text-align: left;
 }
 
+p {
+    margin: 0 0 24px 0;
+}
+
 button {
     background-color: var(--accent-color);
     color: var(--contrast-color);
@@ -18,4 +22,28 @@ button {
     font-size: 20px;
     font-weight: 500;
     border-radius: 100px;
+}
+
+img {
+    width: 100%;
+    max-width: 400px;
+    margin: 12px 6px 48px 6px;
+}
+
+@media screen and (min-width: 1368px) {
+    img {
+        max-width: 500px;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    img {
+        max-width: 600px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    img {
+        max-width: 700px;
+    }
 }
