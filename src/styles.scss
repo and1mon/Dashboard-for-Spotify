@@ -21,11 +21,28 @@
     font-weight: 700;
 }
 
+html,
+body,
+app-root {
+    height: 100%;
+}
+
+app-root {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
 body {
     margin: 0;
     background-color: #131313;
     color: #f5f5f5;
     font-family: Poppins, Arial, sans-serif;
+    overflow-x: visible;
+}
+
+app-home {
+    margin-bottom: 32px;
 }
 
 :root {

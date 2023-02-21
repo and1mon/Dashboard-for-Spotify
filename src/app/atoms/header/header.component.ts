@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   constructor(private oauth: OAuthService) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.oauth.hasValidAccessToken();
+    this.isLoggedIn = new Date(this.oauth.getAccessTokenExpiration()) > new Date();
   }
 
   public logout(): void {
