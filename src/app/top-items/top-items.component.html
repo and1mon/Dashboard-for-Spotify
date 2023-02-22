@@ -1,2 +1,25 @@
-<app-artists></app-artists>
-<app-tracks></app-tracks>
+<nav class="nav-top">
+    <a [routerLink]="['tracks']" [queryParams]="{timeRange: 'short_term'}" routerLinkActive="active_route"
+        [routerLinkActiveOptions]="{
+            fragment: 'ignored',
+            matrixParams: 'ignored',
+            paths: 'subset',
+            queryParams: 'ignored'
+        }">Tracks</a>
+    <a [routerLink]="['artists']" [queryParams]="{timeRange: 'short_term'}" routerLinkActive="active_route"
+        [routerLinkActiveOptions]="{
+                fragment: 'ignored',
+                matrixParams: 'ignored',
+                paths: 'subset',
+                queryParams: 'ignored'
+            }">Artists</a>
+</nav>
+
+<main>
+    <router-outlet></router-outlet>
+</main>
+<nav class="nav-bottom">
+    <a [routerLink]="[]" [queryParams]="{timeRange: 'short_term'}" routerLinkActive="active_route">Last month</a>
+    <a [routerLink]="[]" [queryParams]="{timeRange: 'medium_term'}" routerLinkActive="active_route">6 months</a>
+    <a [routerLink]="[]" [queryParams]="{timeRange: 'long_term'}" routerLinkActive="active_route">All time</a>
+</nav>

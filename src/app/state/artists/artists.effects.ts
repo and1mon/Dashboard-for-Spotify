@@ -17,7 +17,7 @@ export class ArtistsEffects {
         this.actions$.pipe(
             ofType(loadArtists),
             withLatestFrom(this.store$),
-            concatLatestFrom(([action, storeState]) => of(this.spotifyService.getOffsetTracks(action.timeRange, storeState))),
+            concatLatestFrom(([action, storeState]) => of(this.spotifyService.getOffsetArtists(action.timeRange, storeState))),
             filter(([[action, storeState], offset]) => {
                 return action.amount - offset > 0;
             }),
