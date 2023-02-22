@@ -3,7 +3,10 @@
     <div id="mainSection">
         <p class="pageDescription">Take insight into your latest activities and preferences!</p>
         <section>
-            <h2>Artists</h2>
+            <div class="headline-container">
+                <h2>Artists</h2>
+                <a [routerLink]="['../top/artists']" [queryParams]="{timeRange: 'short_term'}">View all</a>
+            </div>
             <div class="scrollRow">
                 <div *ngFor="let artist of artists, let i = index" class="artist">
                     <div class="rel-container">
@@ -15,8 +18,11 @@
             </div>
         </section>
         <section>
-            <h2>Tracks</h2>
-            <div class="trackList">
+            <div class="headline-container">
+                <h2>Tracks</h2>
+                <a [routerLink]="['../top/tracks']" [queryParams]="{timeRange: 'short_term'}">View all</a>
+            </div>
+            <div class=" trackList">
                 <div *ngFor="let track of tracks, let trackIndex = index" class="track">
                     <div class="track-rank">
                         <p>{{trackIndex+1}}</p>
@@ -43,7 +49,10 @@
             </div>
         </section>
         <section>
-            <h2>Playback History</h2>
+            <div class="headline-container">
+                <h2>Playback History</h2>
+                <a>View all</a>
+            </div>
             <div class="trackList">
                 <div *ngFor="let entry of history, let trackIndex = index" class="track">
                     <ng-container *ngIf="entry.track">

@@ -7,48 +7,61 @@ p {
     margin: auto 0;
 }
 
-.pageDescription {
-    font-size: 18px;
-    line-height: 1;
-    font-weight: 500;
-}
-
-.scrollRow {
-    display: flex;
+.trackList {
+    display: grid;
     gap: .5rem;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    grid-template-columns: 100%;
+    grid-gap: 0.5rem;
+    margin: 16px;
 }
 
 .track {
     width: 100%;
     height: 8vw;
     min-height: 50px;
-    max-height: 100px;
+    max-height: 75px;
     display: flex;
     border-radius: 10px;
-    background-color: #262626;
+    background-color: var(--card-background);
 }
 
-.rank {
+.track-rank {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: greenyellow;
-    background-color: black;
+    color: var(--accent-color);
+    background-color: var(--contrast-color);
     border-radius: 10px 0 0 10px;
+    height: 100%;
+    width: auto;
+    aspect-ratio: 1;
 }
 
-.rank p {
+.track-rank p {
     padding: 0 6px;
     width: 2rem;
     text-align: center;
+    font-weight: 700;
+}
+
+.track-cover {
+    height: 100%;
+    width: auto;
+    aspect-ratio: 1;
+    box-sizing: border-box;
+    border: 4px solid var(--card-background);
+    border-radius: 10px;
 }
 
 .trackInfoSection {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
 }
 
 .trackInfoSection p {
@@ -57,29 +70,18 @@ p {
 
 .track-name {
     font-weight: 500;
-    width: 50vw;
-    white-space: nowrap;
-    overflow: hidden;
-    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
-    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
 }
 
 .track-artist {
     font-weight: 400;
     font-size: 12px;
-    color: #d3d3d3;
-    width: 50vw;
-    white-space: nowrap;
-    overflow: hidden;
-    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
-    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
+    color: var(--text-secondary);
 }
 
 .statsIcon {
-    width: 3vw;
-    min-width: 20px;
-    max-width: 35px;
-    height: auto;
+    display: none;
+    width: auto;
+    height: 40%;
     aspect-ratio: 1;
     margin: auto 10px auto auto;
 }
@@ -88,25 +90,59 @@ p {
     filter: brightness(0) saturate(100%) invert(78%) sepia(71%) saturate(481%) hue-rotate(31deg) brightness(108%) contrast(103%);
 }
 
-#mainSection {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 16px;
+.rel-container {
+    position: relative;
 }
 
-#artist-name {
-    height: 3rem;
+@media screen and (min-width: 768px) {
+    .trackList {
+        grid-auto-flow: column;
+        grid-template-rows: repeat(5, auto);
+        grid-template-columns: repeat(2, 49%);
+        justify-content: space-between;
+    }
 }
 
-#song-cover {
-    width: 8vw;
-    min-width: 50px;
-    max-width: 100px;
-    height: 8vw;
-    min-height: 50px;
-    max-height: 100px;
-    box-sizing: border-box;
-    border: 4px solid #262626;
-    border-radius: 10px;
+@media screen and (min-width: 1600px) {
+    .trackList {
+        grid-auto-flow: column;
+        grid-template-rows: repeat(2, auto);
+        grid-template-columns: repeat(5, 19%);
+        justify-content: space-between;
+    }
+
+    .track-name {
+        font-size: 18px;
+    }
+
+    .track-artist {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+
+    .track-rank {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 2560px) {
+
+    .track-name {
+        font-size: 20px;
+    }
+
+    .track-artist {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 64px;
+    }
+
+    .pageDescription {
+        font-size: 32px;
+    }
 }

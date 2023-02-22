@@ -5,6 +5,8 @@ import { RedirectComponent } from './redirect/redirect.component';
 import { ArtistsEffects } from './state/artists/artists.effects';
 import { TracksEffects } from './state/tracks/tracks.effects';
 import { HistoryEffects } from './state/history/history.effects';
+import { ArtistsComponent } from './artists/artists.component';
+import { TracksComponent } from './tracks/tracks.component';
 
 export const ROUTES: Routes = [
   {
@@ -23,6 +25,21 @@ export const ROUTES: Routes = [
   },
   {
     path: "top",
+    children: [
+      {
+        path: "",
+        redirectTo: "tracks",
+        pathMatch: "full",
+      },
+      {
+        path: "artists",
+        component: ArtistsComponent
+      },
+      {
+        path: "tracks",
+        component: TracksComponent
+      }
+    ],
     loadComponent: () => import('./top-items/top-items.component').then(mod => mod.TopItemsComponent),
     providers: [provideEffects(ArtistsEffects, TracksEffects)],
   },

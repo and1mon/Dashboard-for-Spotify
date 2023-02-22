@@ -1,0 +1,55 @@
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+nav a {
+    color: var(--text-color);
+    appearance: none;
+    text-decoration: none;
+    padding: 12px 0;
+    width: 110px;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+}
+
+nav a:hover,
+nav a:active {
+    background-color: rgba(172, 255, 47, 0.161);
+    color: var(--accent-color);
+}
+
+.nav-top {
+    position: sticky;
+    top: 60px;
+    width: 100%;
+    z-index: 1000;
+    background-color: #1a1a1a;
+    box-shadow: 0 10px 10px black;
+    margin-bottom: 16px;
+}
+
+.nav-bottom {
+    position: sticky;
+    bottom: 0px;
+    width: 100%;
+    z-index: 1000;
+    background-color: #1a1a1a;
+    box-shadow: 0 -10px 10px black;
+    margin-top: 16px;
+}
+
+.active_route {
+    color: var(--accent-color) !important;
+    border-bottom: 1px solid yellowgreen !important;
+    border-radius: 0 !important;
+}
+
+@media screen and (min-width: 1600px) {
+    .navs {
+        top: 70px;
+    }
+}
