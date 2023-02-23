@@ -1,10 +1,9 @@
 <main>
     <h1>Personal Dashboard</h1>
     <div id="mainSection">
-        <p class="pageDescription">Take insight into your latest activities and preferences!</p>
         <section>
             <div class="headline-container">
-                <h2>Artists</h2>
+                <h2>Your monthly top artists</h2>
                 <a [routerLink]="['../top/artists']" [queryParams]="{timeRange: 'short_term'}">View all</a>
             </div>
             <div class="scrollRow">
@@ -19,7 +18,7 @@
         </section>
         <section>
             <div class="headline-container">
-                <h2>Tracks</h2>
+                <h2>Your monthly top tracks</h2>
                 <a [routerLink]="['../top/tracks']" [queryParams]="{timeRange: 'short_term'}">View all</a>
             </div>
             <div class=" trackList">
@@ -51,7 +50,7 @@
         <section>
             <div class="headline-container">
                 <h2>Playback History</h2>
-                <a>View all</a>
+                <a [routerLink]="['../history']" [queryParams]="['../history']">View all</a>
             </div>
             <div class="trackList">
                 <div *ngFor="let entry of history, let trackIndex = index" class="track">

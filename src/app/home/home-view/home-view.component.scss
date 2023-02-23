@@ -6,6 +6,7 @@ h1 {
 
 h2 {
     text-align: left;
+    font-size: 20px;
 }
 
 img {
@@ -27,9 +28,14 @@ a {
     text-decoration: none;
     color: var(--accent-color);
     padding: 8px 12px;
+    border: 1px solid transparent;
 }
 
 a:hover,
+a:active {
+    background-color: rgba(172, 255, 47, 0.161);
+}
+
 a:active {
     border-bottom: 1px solid;
 }
@@ -38,12 +44,6 @@ a:active {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.pageDescription {
-    font-size: 18px;
-    line-height: 1;
-    font-weight: 500;
 }
 
 .scrollRow {
@@ -202,6 +202,10 @@ a:active {
         grid-template-columns: repeat(2, 49%);
         justify-content: space-between;
     }
+
+    h2 {
+        font-size: 24px;
+    }
 }
 
 @media screen and (min-width: 1600px) {
@@ -224,14 +228,6 @@ a:active {
 
     .track-artist {
         font-size: 14px;
-    }
-
-    h1 {
-        font-size: 48px;
-    }
-
-    .pageDescription {
-        font-size: 24px;
     }
 
     .artist-rank {
@@ -265,9 +261,5 @@ a:active {
 
     h1 {
         font-size: 64px;
-    }
-
-    .pageDescription {
-        font-size: 32px;
     }
 }
