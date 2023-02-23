@@ -1,0 +1,26 @@
+<h1>Playback History</h1>
+<div class="trackList">
+    <div *ngFor="let entry of history, let trackIndex = index" class="track">
+        <ng-container *ngIf="entry.track">
+            <img *ngIf="entry.track.album" src="{{entry.track.album.images[0].url}}" alt="Album cover"
+                class="track-cover">
+            <div class="trackInfoSection">
+                <p class="track-name">{{entry.track.name}}</p>
+                <p class="track-artist" *ngIf="entry.track.artists !== undefined">
+                    <ng-container *ngFor="let artist of entry.track.artists, let artistIndex = index">
+                        <ng-container *ngIf=" artistIndex < entry.track.artists.length - 1, else elseBlock">
+                            {{artist.name}},
+                        </ng-container>
+                        <ng-template #elseBlock>
+                            {{artist.name}}
+                        </ng-template>
+                    </ng-container>
+                </p>
+                <ng-template #elseBlock>
+                    <p>No artists found.</p>
+                </ng-template>
+            </div>
+        </ng-container>
+        <p class="timestamp">{{entry.played_at | customDate}} <br> ago</p>
+    </div>
+</div>
