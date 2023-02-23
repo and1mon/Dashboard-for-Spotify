@@ -77,19 +77,13 @@ p {
 
 @media screen and (min-width: 768px) {
     .artist-list {
-        grid-auto-flow: column;
-        grid-template-rows: repeat(5, auto);
-        grid-template-columns: repeat(2, 49%);
-        justify-content: space-between;
+        padding: 0 15%;
     }
 }
 
 @media screen and (min-width: 1600px) {
     .artist-list {
-        grid-auto-flow: column;
-        grid-template-rows: repeat(2, auto);
-        grid-template-columns: repeat(5, 19%);
-        justify-content: space-between;
+        padding: 0 25%;
     }
 
     .artist-name {
@@ -106,6 +100,10 @@ p {
 }
 
 @media screen and (min-width: 2560px) {
+
+    .artist-list {
+        padding: 0 30%;
+    }
 
     .track-name {
         font-size: 20px;
