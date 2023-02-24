@@ -2,6 +2,7 @@ h1 {
     text-align: center;
     line-height: 1.25;
     padding: 8px;
+    margin: 8px 0;
 }
 
 h2 {
@@ -52,6 +53,7 @@ a:active {
     grid-auto-flow: column;
     grid-gap: .5rem;
     overflow-x: auto;
+    overflow-y: hidden;
     width: calc(100% + 16px);
     margin-right: -16px;
 }
@@ -163,7 +165,10 @@ a:active {
 
 .artist-name {
     height: 3rem;
+    padding: 6px;
     font-weight: 500;
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0));
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0));
 }
 
 .artist-rank {
