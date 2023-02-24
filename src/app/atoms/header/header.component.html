@@ -1,6 +1,23 @@
 <header>
     <div id="header-container">
-        <p id="app-title">UserDash - Spotify Dashboard</p>
-        <button (click)="logout()" *ngIf="isLoggedIn">Logout</button>
+        <a id="app-title" routerLink="/home">UserDash - Spotify Dashboard</a>
+        <button class="toggle-navbar" [ngClass]="isOpen() ? 'is-active': '' " *ngIf="isLoggedIn"
+            (click)="toggleNavbar()">
+            <div class="icon-left">
+            </div>
+            <div class="icon-right"></div>
+        </button>
+        <nav *ngIf="isLoggedIn">
+            <a routerLink="/home" routerLinkActive="active_route">Home</a>
+            <a routerLink="/top" [queryParams]="{timeRange: 'short_term'}" routerLinkActive="active_route"
+                [routerLinkActiveOptions]="{
+                fragment: 'ignored',
+                matrixParams: 'ignored',
+                paths: 'subset',
+                queryParams: 'ignored'
+            }">Top</a>
+            <a routerLink="/history" routerLinkActive="active_route">History</a>
+            <button (click)="logout()" *ngIf="isLoggedIn" class="logout">Logout</button>
+        </nav>
     </div>
 </header>

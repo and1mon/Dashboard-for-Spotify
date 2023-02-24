@@ -1,8 +1,9 @@
 header {
     background-color: #000000FF;
+    position: relative;
 }
 
-button {
+.logout {
     padding: 10px;
     background-color: rgb(44, 44, 46);
     color: #e6e6e6;
@@ -12,8 +13,122 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+a {
+    text-decoration: none;
+    color: var(--text-main);
+}
+
+.logout:hover {
     background-color: rgb(138, 0, 0);
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    transition: 0.4s;
+}
+
+nav a {
+    font-size: 16px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid transparent;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+.toggle-navbar {
+    appearance: none;
+    border: none;
+    background: none;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.icon-left,
+.icon-right,
+.icon-left:before,
+.icon-right:before,
+.icon-left:after,
+.icon-right:after {
+    transition-property: all;
+    transition-duration: 0.4s;
+    position: absolute;
+    height: 5px;
+    width: 15px;
+    background-color: var(--text-main);
+}
+
+.icon-left {
+    top: auto;
+    bottom: auto;
+    right: 35px;
+}
+
+.icon-left:before,
+.icon-right:before {
+    content: "";
+    top: -10px;
+    left: 0;
+}
+
+.icon-left:after,
+.icon-right:after {
+    content: "";
+    top: 10px;
+    left: 0;
+}
+
+.icon-right {
+    top: auto;
+    right: 20px;
+}
+
+.toggle-navbar.is-active .icon-left,
+.toggle-navbar.is-active .icon-right {
+    background: transparent;
+}
+
+.toggle-navbar.is-active .icon-left:before {
+    transform: rotateZ(45deg) scaleX(1.4) translate(2px, 2px);
+}
+
+.toggle-navbar.is-active .icon-right:before {
+    transform: rotateZ(-45deg) scaleX(1.4) translate(-2px, 2px);
+}
+
+.toggle-navbar.is-active .icon-left:after {
+    transform: rotateZ(-45deg) scaleX(1.4) translate(2px, -2px);
+}
+
+.toggle-navbar.is-active .icon-right:after {
+    transform: rotateZ(45deg) scaleX(1.4) translate(-2px, -2px);
+}
+
+
+.toggle-navbar.is-active~nav {
+    left: 0;
+}
+
+.active_route {
+    color: var(--accent-color) !important;
+    border-bottom: 1px solid var(--accent-color) !important;
 }
 
 #app-title {
@@ -24,16 +139,44 @@ button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 3vw;
+    padding: 0 1vw;
     height: 60px;
+}
+
+@media screen and (min-width: 768px) {
+    nav {
+        position: relative;
+        left: 0;
+        display: flex;
+        flex-direction: row;
+        height: auto;
+        width: auto;
+        list-style: none;
+        justify-content: flex-end;
+        align-items: center;
+        transition: 0s;
+    }
+
+    .logout {
+        margin-left: 24px;
+    }
+
+    .toggle-navbar {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 1600px) {
 
-    button {
+    .logout {
         padding: 16px;
         border-radius: 4px;
         font-size: 20px;
+    }
+
+    nav a {
+        font-size: 20px;
+        padding: 16px;
     }
 
     #app-title {

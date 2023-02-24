@@ -33,6 +33,12 @@ app-root {
     overflow: auto;
 }
 
+//prevent scrolling when navabr is opened on mobile
+.navbar-active {
+    overflow: hidden;
+    height: 100vh;
+}
+
 body {
     margin: 0;
     background-color: #131313;
