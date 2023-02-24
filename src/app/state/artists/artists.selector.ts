@@ -19,3 +19,7 @@ export const selectAllArtistsLongTerm = (amount: number) => createSelector(
     (state: ArtistsState) => state.artistsLongTerm.slice(0, amount),
 );
 
+export const selectArtistsLoadingState = () => createSelector(
+    selectArtists,
+    (state: ArtistsState) => state.status,
+);

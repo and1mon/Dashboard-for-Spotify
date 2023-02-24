@@ -6,77 +6,21 @@
                 <h2>Your monthly top artists</h2>
                 <a [routerLink]="['../top/artists']" [queryParams]="{timeRange: 'short_term'}">View all</a>
             </div>
-            <div class="scrollRow">
-                <div *ngFor="let artist of artists, let i = index" class="artist">
-                    <div class="rel-container">
-                        <img *ngIf="artist.images" src="{{ artist.images[0].url }}">
-                        <p class="artist-rank">{{i+1}}</p>
-                    </div>
-                    <p class="artist-name">{{artist.name}}</p>
-                </div>
-            </div>
+            <app-artists [amount]="10" [displayType]="'scrollRow'"></app-artists>
         </section>
         <section>
             <div class="headline-container">
                 <h2>Your monthly top tracks</h2>
                 <a [routerLink]="['../top/tracks']" [queryParams]="{timeRange: 'short_term'}">View all</a>
             </div>
-            <div class=" trackList">
-                <div *ngFor="let track of tracks, let trackIndex = index" class="track">
-                    <div class="track-rank">
-                        <p>{{trackIndex+1}}</p>
-                    </div>
-                    <img *ngIf="track.album" src="{{track.album.images[0].url}}" alt="Album cover" class="track-cover">
-                    <div class="trackInfoSection">
-                        <p class="track-name">{{track.name}}</p>
-                        <p class="track-artist" *ngIf="track.artists !== undefined">
-                            <ng-container *ngFor="let artist of track.artists, let artistIndex = index">
-                                <ng-container *ngIf=" artistIndex < track.artists.length - 1, else elseBlock">
-                                    {{artist.name}},
-                                </ng-container>
-                                <ng-template #elseBlock>
-                                    {{artist.name}}
-                                </ng-template>
-                            </ng-container>
-                        </p>
-                        <ng-template #elseBlock>
-                            <p>No artists found.</p>
-                        </ng-template>
-                    </div>
-                    <img src="assets/img/stats_icon.svg" alt="" class="statsIcon">
-                </div>
-            </div>
+            <app-tracks [amount]="10" [columnView]="true"></app-tracks>
         </section>
         <section>
             <div class="headline-container">
                 <h2>Playback History</h2>
                 <a [routerLink]="['../history']" [queryParams]="['../history']">View all</a>
             </div>
-            <div class="trackList">
-                <div *ngFor="let entry of history, let trackIndex = index" class="track">
-                    <ng-container *ngIf="entry.track">
-                        <img *ngIf="entry.track.album" src="{{entry.track.album.images[0].url}}" alt="Album cover"
-                            class="track-cover">
-                        <div class="trackInfoSection">
-                            <p class="track-name">{{entry.track.name}}</p>
-                            <p class="track-artist" *ngIf="entry.track.artists !== undefined">
-                                <ng-container *ngFor="let artist of entry.track.artists, let artistIndex = index">
-                                    <ng-container *ngIf=" artistIndex < entry.track.artists.length - 1, else elseBlock">
-                                        {{artist.name}},
-                                    </ng-container>
-                                    <ng-template #elseBlock>
-                                        {{artist.name}}
-                                    </ng-template>
-                                </ng-container>
-                            </p>
-                            <ng-template #elseBlock>
-                                <p>No artists found.</p>
-                            </ng-template>
-                        </div>
-                    </ng-container>
-                    <p class="timestamp">{{entry.played_at | customDate}} <br> ago</p>
-                </div>
-            </div>
+            <app-history [amount]="10" [columnView]="true"></app-history>
         </section>
     </div>
 </main>

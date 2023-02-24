@@ -51,6 +51,16 @@ app-home {
     margin-bottom: 32px;
 }
 
+.error-message {
+    text-align: center;
+}
+
+@keyframes loading {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
 :root {
     --text-main: #fff;
     --text-secondary: #d3d3d3;

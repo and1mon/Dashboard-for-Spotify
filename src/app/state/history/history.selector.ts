@@ -8,3 +8,8 @@ export const selectAllHistoryEntries = (amount: number) => createSelector(
     selectHistory,
     (state: HistoryState) => state.history.slice(0, amount),
 );
+
+export const selectHistoryLoadingState = () => createSelector(
+    selectHistory,
+    (state: HistoryState) => state.status,
+);

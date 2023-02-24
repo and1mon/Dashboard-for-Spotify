@@ -21,7 +21,8 @@ export const historyReducer = createReducer(
 
     on(loadHistorySuccess, (state, { history }) => ({
         ...state,
-        history: history
+        history: history,
+        status: 'success'
     })),
 
     on(loadHistoryFailure, (state, { error }) => ({

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TracksViewComponent } from './tracks-view/tracks-view.component';
 import { Store } from '@ngrx/store';
 import { AppState } from '../state/app.state';
-import { selectAllTracksLongTerm, selectAllTracksMediumTerm, selectAllTracksShortTerm } from '../state/tracks/tracks.selector';
+import { selectAllTracksLongTerm, selectAllTracksMediumTerm, selectAllTracksShortTerm, selectTracksLoadingState } from '../state/tracks/tracks.selector';
 import { loadTracks } from '../state/tracks/tracks.actions';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
@@ -21,13 +21,18 @@ export class TracksComponent implements OnInit, OnDestroy {
   @Input()
   amount = 50;
 
+  @Input() columnView = false;
+
   timeRangeSub: Subscription | undefined;
-  tracks$: Observable<TrackObject[]> | undefined;
+  tracks$?: Observable<TrackObject[]>;
+  loadingState$?: Observable<"pending" | "loading" | "error" | "success">;
+
 
   constructor(private store: Store<AppState>, private route: ActivatedRoute) { }
 
 
   ngOnInit(): void {
+    this.loadingState$ = this.store.select(selectTracksLoadingState());
     this.timeRangeSub = this.route.queryParams.subscribe(() => {
 
       let timeRange = this.route.snapshot.queryParams["timeRange"];

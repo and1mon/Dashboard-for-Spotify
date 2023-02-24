@@ -1,1 +1,4 @@
-<app-tracks-view *ngIf="tracks$ | async as tracks" [tracks]="tracks"></app-tracks-view>
+<ng-container *ngIf="loadingState$ | async as loadingState">
+    <app-tracks-view *ngIf="tracks$ | async as tracks" [columnView]="columnView" [tracks]="tracks"
+        [loadingState]="loadingState" [expectedItems]="amount"></app-tracks-view>
+</ng-container>

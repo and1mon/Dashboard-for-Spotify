@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HistoryViewComponent } from './history-view/history-view.component';
 import { Store } from '@ngrx/store';
-import { SpotifyService } from '../services/spotify.service';
 import { AppState } from '../state/app.state';
 import { loadHistory } from '../state/history/history.actions';
-import { selectAllHistoryEntries } from '../state/history/history.selector';
+import { selectAllHistoryEntries, selectHistoryLoadingState } from '../state/history/history.selector';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-history',
@@ -16,14 +16,17 @@ import { selectAllHistoryEntries } from '../state/history/history.selector';
 })
 export class HistoryComponent {
 
-  amount = 50;
+  @Input() amount = 50;
+  @Input() columnView = false;
 
+  loadingState$?: Observable<"pending" | "loading" | "error" | "success">;
   history$ = this.store.select(selectAllHistoryEntries(this.amount));
 
 
   constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
+    this.loadingState$ = this.store.select(selectHistoryLoadingState());
     this.store.dispatch(loadHistory({ amount: this.amount }));
   }
 

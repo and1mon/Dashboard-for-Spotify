@@ -1,1 +1,4 @@
-<app-history-view *ngIf="history$ | async as history" [history]="history"></app-history-view>
+<ng-container *ngIf="loadingState$ | async as loadingState">
+    <app-history-view *ngIf="history$ | async as history" [history]="history" [columnView]="columnView"
+        [loadingState]="loadingState" [expectedItems]="amount"></app-history-view>
+</ng-container>

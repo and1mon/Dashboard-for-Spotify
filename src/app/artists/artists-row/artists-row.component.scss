@@ -1,0 +1,126 @@
+p {
+    margin: auto 0;
+}
+
+.scrollRow {
+    display: grid;
+    grid-auto-columns: minmax(120px, 35%);
+    grid-auto-flow: column;
+    grid-gap: .5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: calc(100% + 16px);
+    margin-right: -16px;
+}
+
+.artist {
+    flex-basis: 100%;
+    min-width: 120px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--card-background);
+    border-radius: 10px;
+    position: relative;
+}
+
+.artist-img {
+    aspect-ratio: 1;
+    height: auto;
+    width: 100%;
+    border-radius: 26px;
+    border: 16px solid var(--card-background);
+    box-sizing: border-box;
+}
+
+.artist-name {
+    height: 3rem;
+    padding: 6px;
+    font-weight: 500;
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
+}
+
+.artist-rank {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%);
+    background: var(--contrast-color);
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 100px;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.rel-container {
+    position: relative;
+}
+
+.dummyArtistName {
+    height: 25px;
+    width: 80px;
+    padding: 0;
+    background-color: gray;
+    mask-image: none;
+    -webkit-mask-image: none;
+    overflow: hidden;
+    align-self: center;
+    margin-bottom: 8px;
+}
+
+.dummyImg {
+    background-color: gray;
+    overflow: hidden;
+}
+
+.dummyArtistName::before,
+.dummyImg::before {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgb(154, 154, 154));
+    transform: translateX(-100%);
+    animation: loading 2s infinite ease-in-out;
+}
+
+@media screen and (min-width: 1600px) {
+
+    .scrollRow {
+        width: 100%;
+        margin: 0;
+    }
+
+    .artist-name {
+        font-size: 18px;
+    }
+
+    .artist-rank {
+        width: 3rem;
+        height: 3rem;
+        line-height: 3rem;
+        font-size: 20px;
+    }
+}
+
+
+@media screen and (min-width: 1920px) {
+    .scrollRow {
+        grid-template-rows: repeat(1, auto);
+    }
+}
+
+@media screen and (min-width: 2560px) {
+
+    .artist-name {
+        font-size: 20px;
+    }
+
+}
