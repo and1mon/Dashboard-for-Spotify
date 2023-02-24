@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SpotifyService } from '../services/spotify.service';
 import { HomeViewComponent } from './home-view/home-view.component';
 import { Store } from '@ngrx/store';
 import { AppState } from '../state/app.state';
@@ -27,7 +26,7 @@ export class HomeComponent implements OnInit {
   history$ = this.store.select(selectAllHistoryEntries(this.amount));
 
 
-  constructor(private store: Store<AppState>, private spotify: SpotifyService) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.store.dispatch(loadTracks({ amount: this.amount, timeRange: "short_term" }));
