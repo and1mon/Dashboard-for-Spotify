@@ -27,3 +27,38 @@ img {
     display: flex;
     align-items: center;
 }
+
+@media screen and (min-width: 1600px) {
+
+    p {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    img {
+        width: 80px;
+        padding: 14px 10px;
+    }
+
+    footer {
+        padding-bottom: 18px;
+    }
+
+}
+
+@media screen and (min-width: 2560px) {
+
+    p {
+        margin: 0;
+        font-size: 16px;
+    }
+
+    img {
+        width: 90px;
+        padding: 16px 12px;
+    }
+
+    footer {
+        padding-bottom: 24px;
+    }
+}

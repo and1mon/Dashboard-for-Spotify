@@ -29,7 +29,13 @@ export class HeaderComponent implements OnInit {
   public toggleNavbar() {
     this.navbarIsOpen = !this.navbarIsOpen;
     let appRoot = document.getElementsByTagName("app-root")[0];
-    appRoot.classList.toggle("navbar-active")
+    appRoot.classList.toggle("navbar-active");
+  }
+
+  public closeNavbar() {
+    this.navbarIsOpen = false;
+    let appRoot = document.getElementsByTagName("app-root")[0];
+    appRoot.classList.remove("navbar-active");
   }
 
   public isOpen() {

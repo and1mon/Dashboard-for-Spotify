@@ -24,7 +24,7 @@ const initializeOAuth = (oauthService: OAuthService, router: Router) => () => {
 
     oauthService.tryLoginCodeFlow()
       .then(() => {
-        if (!oauthService.hasValidAccessToken()) {
+        if (new Date(oauthService.getAccessTokenExpiration()) < new Date()) {
           sessionStorage.setItem("path", encodeURI(window.location.pathname + window.location.search));
           router.navigate(["redirect"]).then(() => sessionStorage.setItem("redirected", "true"));
           resolve(true);
@@ -35,7 +35,7 @@ const initializeOAuth = (oauthService: OAuthService, router: Router) => () => {
         }
 
         oauthService.events.pipe(filter(e => e.type === 'token_refresh_error')).subscribe(e => {
-          if (!oauthService.hasValidAccessToken()) {
+          if (new Date(oauthService.getAccessTokenExpiration()) < new Date()) {
             sessionStorage.setItem("path", encodeURI(window.location.pathname + window.location.search))
             router.navigate(["redirect"]).then(() => sessionStorage.setItem("redirected", "true"));
           }

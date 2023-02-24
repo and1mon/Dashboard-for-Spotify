@@ -26,7 +26,7 @@ export const ROUTES: Routes = [
   },
   {
     path: "history",
-    component: HistoryComponent,
+    loadComponent: () => import('./history/history.component').then(mod => mod.HistoryComponent),
     providers: [provideEffects(HistoryEffects)],
   },
   {

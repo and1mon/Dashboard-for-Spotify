@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { TrackObject, ArtistObject, PlayHistoryObject } from 'src/libs/openapi';
 import { CustomDatePipe } from 'src/app/custom.datepipe';
 import { RouterModule } from '@angular/router';
+import { TracksComponent } from 'src/app/tracks/tracks.component';
+import { HistoryComponent } from 'src/app/history/history.component';
 
 @Component({
   selector: 'app-home-view',

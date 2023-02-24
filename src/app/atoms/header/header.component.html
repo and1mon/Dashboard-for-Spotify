@@ -8,15 +8,15 @@
             <div class="icon-right"></div>
         </button>
         <nav *ngIf="isLoggedIn">
-            <a routerLink="/home" routerLinkActive="active_route">Home</a>
+            <a routerLink="/home" routerLinkActive="active_route" (click)="closeNavbar()">Home</a>
             <a routerLink="/top" [queryParams]="{timeRange: 'short_term'}" routerLinkActive="active_route"
                 [routerLinkActiveOptions]="{
                 fragment: 'ignored',
                 matrixParams: 'ignored',
                 paths: 'subset',
                 queryParams: 'ignored'
-            }">Top</a>
-            <a routerLink="/history" routerLinkActive="active_route">History</a>
+            }" (click)="closeNavbar()">Top</a>
+            <a routerLink="/history" routerLinkActive="active_route" (click)="closeNavbar()">History</a>
             <button (click)="logout()" *ngIf="isLoggedIn" class="logout">Logout</button>
         </nav>
     </div>
