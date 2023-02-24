@@ -13,5 +13,8 @@ import { CustomDatePipe } from 'src/app/custom.datepipe';
 export class HistoryViewComponent {
 
   @Input() history: PlayHistoryObject[] = [];
+  @Input() columnView = false;
+  @Input() loadingState: "pending" | "loading" | "error" | "success" = "loading";
+  @Input() expectedItems: number = 50;
 
 }

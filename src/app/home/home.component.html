@@ -1,7 +1,3 @@
-<ng-container *ngIf="tracks$ | async as tracks">
-    <ng-container *ngIf="artists$ | async as artists">
-        <ng-container *ngIf="history$ | async as history">
-            <app-home-view [artists]="artists" [tracks]="tracks" [history]=history></app-home-view>
-        </ng-container>
-    </ng-container>
+<ng-container *ngIf="artists$ | async as artists">
+    <app-home-view [artists]="artists"></app-home-view>
 </ng-container>

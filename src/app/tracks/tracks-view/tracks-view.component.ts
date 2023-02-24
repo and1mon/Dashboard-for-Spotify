@@ -13,5 +13,8 @@ export class TracksViewComponent {
 
 
   @Input() tracks: TrackObject[] = [];
+  @Input() columnView = false;
+  @Input() loadingState: "pending" | "loading" | "error" | "success" = "loading";
+  @Input() expectedItems: number = 50;
 
 }

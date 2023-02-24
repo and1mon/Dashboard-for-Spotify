@@ -1,9 +1,26 @@
-<div class="artist-list">
+<div class="artist-list" *ngIf="loadingState == 'success'">
     <div *ngFor="let artist of artists, let i = index" class="artist">
         <div class="artist-rank">
             <p>{{i+1}}</p>
         </div>
         <img *ngIf="artist.images" src="{{ artist.images[0].url }}" class="artist-img">
         <p class="artist-name">{{artist.name}}</p>
+    </div>
+
+    <ng-container *ngIf="artists.length <= 0">
+        <h1 class="error-message">Sorry, we could not find any data.</h1>
+    </ng-container>
+</div>
+
+<!---Loading Skeleton:--->
+
+<div *ngIf="loadingState == 'loading'" class="artist-list">
+    <div *ngFor="let _ of [].constructor(expectedItems), let i = index" class="artist">
+        <div class="artist-rank">
+            <p>{{i+1}}</p>
+        </div>
+        <div class="dummyImg artist-img">
+        </div>
+        <p class="dummyArtistName artist-name "></p>
     </div>
 </div>

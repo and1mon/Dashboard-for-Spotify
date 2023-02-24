@@ -12,7 +12,6 @@ p {
     gap: .5rem;
     grid-template-columns: 100%;
     grid-gap: 0.5rem;
-    margin: 16px;
 }
 
 .artist {
@@ -73,6 +72,30 @@ p {
     overflow: hidden;
     mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
     -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
+}
+
+.dummyArtistName {
+    height: 25px;
+    width: 200px;
+    background-color: gray;
+    mask-image: none;
+    -webkit-mask-image: none;
+}
+
+.dummyArtistName:before,
+.dummyImg::before {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgb(154, 154, 154));
+    transform: translateX(-100%);
+    animation: loading 2s infinite ease-in-out;
+}
+
+.dummyImg {
+    background-color: gray;
+    overflow: hidden;
 }
 
 @media screen and (min-width: 768px) {

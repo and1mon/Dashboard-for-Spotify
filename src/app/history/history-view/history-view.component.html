@@ -1,5 +1,5 @@
-<h1>Playback History</h1>
-<div class="trackList">
+<div class="trackList" [ngClass]="columnView ? 'trackListColumns' : 'trackListPadding'"
+    *ngIf="loadingState == 'success'">
     <div *ngFor="let entry of history, let trackIndex = index" class="track">
         <ng-container *ngIf="entry.track">
             <img *ngIf="entry.track.album" src="{{entry.track.album.images[0].url}}" alt="Album cover"
@@ -22,5 +22,23 @@
             </div>
         </ng-container>
         <p class="timestamp">{{entry.played_at | customDate}} <br> ago</p>
+    </div>
+
+    <ng-container *ngIf="history.length <= 0">
+        <h1 class="error-message">Sorry, we could not find any data.</h1>
+    </ng-container>
+</div>
+
+<!---Loading Skeleton:--->
+
+<div class="trackList" [ngClass]="columnView ? 'trackListColumns' : 'trackListPadding'"
+    *ngIf="loadingState == 'loading'">
+    <div *ngFor="let _ of [].constructor(expectedItems), let i = index" class="track">
+        <div class="dummyImg track-cover"></div>
+        <div class="dummyInfoSection">
+            <p class="dummyTrackName track-name"></p>
+            <p class="dummyArtistName track-artist">
+            </p>
+        </div>
     </div>
 </div>

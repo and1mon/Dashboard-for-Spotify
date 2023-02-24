@@ -7,7 +7,7 @@ import { TracksEffects } from './state/tracks/tracks.effects';
 import { HistoryEffects } from './state/history/history.effects';
 import { ArtistsComponent } from './artists/artists.component';
 import { TracksComponent } from './tracks/tracks.component';
-import { HistoryComponent } from './history/history.component';
+import { HistoryPageComponent } from './history-page/history-page.component';
 
 export const ROUTES: Routes = [
   {
@@ -26,7 +26,7 @@ export const ROUTES: Routes = [
   },
   {
     path: "history",
-    loadComponent: () => import('./history/history.component').then(mod => mod.HistoryComponent),
+    loadComponent: () => import('./history-page/history-page.component').then(mod => mod.HistoryPageComponent),
     providers: [provideEffects(HistoryEffects)],
   },
   {

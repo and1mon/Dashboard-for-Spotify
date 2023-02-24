@@ -1,4 +1,5 @@
-<div class="trackList">
+<div class="trackList" [ngClass]="columnView ? 'trackListColumns' : 'trackListPadding'"
+    *ngIf="loadingState == 'success'">
     <div *ngFor="let track of tracks, let trackIndex = index" class="track">
         <div class="track-rank">
             <p>{{trackIndex+1}}</p>
@@ -20,6 +21,26 @@
                 <p>No artists found.</p>
             </ng-template>
         </div>
-        <img src="assets/img/stats_icon.svg" alt="Pfeil" class="statsIcon">
+        <img src="assets/img/stats_icon.svg" alt="" class="statsIcon">
+    </div>
+    <ng-container *ngIf="tracks.length <= 0">
+        <h1 class="error-message">Sorry, we could not find any data.</h1>
+    </ng-container>
+</div>
+
+<!---Loading Skeleton:--->
+
+<div class="trackList" [ngClass]="columnView ? 'trackListColumns' : 'trackListPadding'"
+    *ngIf="loadingState == 'loading'">
+    <div *ngFor="let _ of [].constructor(expectedItems), let i = index" class="track">
+        <div class="track-rank">
+            <p>{{i+1}}</p>
+        </div>
+        <div class="dummyImg track-cover"></div>
+        <div class="dummyInfoSection">
+            <p class="dummyTrackName track-name"></p>
+            <p class="dummyArtistName track-artist">
+            </p>
+        </div>
     </div>
 </div>

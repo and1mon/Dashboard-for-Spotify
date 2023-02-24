@@ -19,3 +19,8 @@ export const selectAllTracksLongTerm = (amount: number) => createSelector(
     (state: TracksState) => state.tracksLongTerm.slice(0, amount),
 );
 
+export const selectTracksLoadingState = () => createSelector(
+    selectTracks,
+    (state: TracksState) => state.status,
+);
+

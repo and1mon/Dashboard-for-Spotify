@@ -1,1 +1,10 @@
-<app-artists-view *ngIf="artists$ | async as artists" [artists]="artists"></app-artists-view>
+<ng-container *ngIf="loadingState$ | async as loadingState">
+    <ng-container *ngIf="displayType == 'list'">
+        <app-artists-view *ngIf="artists$ | async as artists" [artists]="artists" [loadingState]="loadingState"
+            [expectedItems]="amount"></app-artists-view>
+    </ng-container>
+    <ng-container *ngIf="displayType == 'scrollRow'">
+        <app-artists-row *ngIf="artists$ | async as artists" [artists]="artists" [loadingState]="loadingState"
+            [expectedItems]="amount"></app-artists-row>
+    </ng-container>
+</ng-container>

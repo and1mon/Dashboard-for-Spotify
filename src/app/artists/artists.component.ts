@@ -4,17 +4,19 @@ import { ArtistObject } from 'src/libs/openapi';
 import { SpotifyService } from '../services/spotify.service';
 import { ArtistsViewComponent } from './artists-view/artists-view.component';
 import { Observable, Subscription } from 'rxjs';
-import { Store } from '@ngrx/store';
+import { MemoizedSelector, Store } from '@ngrx/store';
 import { loadArtists } from '../state/artists/artists.actions';
-import { selectAllArtistsLongTerm, selectAllArtistsMediumTerm, selectAllArtistsShortTerm } from '../state/artists/artists.selector';
+import { selectAllArtistsLongTerm, selectAllArtistsMediumTerm, selectAllArtistsShortTerm, selectArtistsLoadingState } from '../state/artists/artists.selector';
 import { AppState } from '../state/app.state';
 import { ActivatedRoute } from '@angular/router';
+import { ArtistsRowComponent } from './artists-row/artists-row.component';
+import { ArtistsState } from '../state/artists/artists.reducer';
 
 
 @Component({
   selector: 'app-artists',
   standalone: true,
-  imports: [CommonModule, ArtistsViewComponent],
+  imports: [CommonModule, ArtistsViewComponent, ArtistsRowComponent],
   templateUrl: './artists.component.html',
   styleUrls: ['./artists.component.scss']
 })
@@ -23,12 +25,16 @@ export class ArtistsComponent implements OnInit {
   @Input()
   amount = 50;
 
+  @Input() displayType: "scrollRow" | "list" = "list";
+
   timeRangeSub: Subscription | undefined;
   artists$: Observable<ArtistObject[]> | undefined;
+  loadingState$?: Observable<"pending" | "loading" | "error" | "success">;
 
   constructor(private store: Store<AppState>, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.loadingState$ = this.store.select(selectArtistsLoadingState());
     this.timeRangeSub = this.route.queryParams.subscribe(() => {
 
       let timeRange = this.route.snapshot.queryParams["timeRange"];

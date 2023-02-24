@@ -28,8 +28,10 @@ section {
 a {
     text-decoration: none;
     color: var(--accent-color);
-    padding: 8px 12px;
+    padding: 8px 16px;
     border: 1px solid transparent;
+    margin-right: -16px;
+    white-space: nowrap;
 }
 
 a:hover,
@@ -47,86 +49,6 @@ a:active {
     justify-content: space-between;
 }
 
-.scrollRow {
-    display: grid;
-    grid-auto-columns: minmax(120px, 35%);
-    grid-auto-flow: column;
-    grid-gap: .5rem;
-    overflow-x: auto;
-    overflow-y: hidden;
-    width: calc(100% + 16px);
-    margin-right: -16px;
-}
-
-.trackList {
-    display: grid;
-    gap: .5rem;
-    grid-template-columns: 100%;
-    grid-gap: 0.5rem;
-}
-
-.track {
-    width: 100%;
-    height: 8vw;
-    min-height: 50px;
-    max-height: 75px;
-    display: flex;
-    border-radius: 10px;
-    background-color: var(--card-background);
-}
-
-.track-rank {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent-color);
-    background-color: var(--contrast-color);
-    border-radius: 10px 0 0 10px;
-    height: 100%;
-    width: auto;
-    aspect-ratio: 1;
-}
-
-.track-rank p {
-    padding: 0 6px;
-    width: 2rem;
-    text-align: center;
-    font-weight: 700;
-}
-
-.track-cover {
-    height: 100%;
-    width: auto;
-    aspect-ratio: 1;
-    box-sizing: border-box;
-    border: 4px solid var(--card-background);
-    border-radius: 10px;
-}
-
-.trackInfoSection {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    white-space: nowrap;
-    overflow: hidden;
-    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
-    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0));
-}
-
-.trackInfoSection p {
-    margin: 0 10px;
-}
-
-.track-name {
-    font-weight: 500;
-}
-
-.track-artist {
-    font-weight: 400;
-    font-size: 12px;
-    color: var(--text-secondary);
-}
 
 .statsIcon {
     display: none;
@@ -134,64 +56,6 @@ a:active {
     height: 40%;
     aspect-ratio: 1;
     margin: auto 10px auto auto;
-}
-
-.track:hover .statsIcon {
-    filter: brightness(0) saturate(100%) invert(78%) sepia(71%) saturate(481%) hue-rotate(31deg) brightness(108%) contrast(103%);
-}
-
-.artist {
-    flex-basis: 100%;
-    min-width: 120px;
-    flex-grow: 0;
-    flex-shrink: 0;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: var(--card-background);
-    border-radius: 10px;
-    position: relative;
-}
-
-.artist img {
-    aspect-ratio: 1;
-    height: auto;
-    width: 100%;
-    border-radius: 26px;
-    border: 16px solid var(--card-background);
-    box-sizing: border-box;
-}
-
-.artist-name {
-    height: 3rem;
-    padding: 6px;
-    font-weight: 500;
-    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0));
-    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0));
-}
-
-.artist-rank {
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    right: 50%;
-    transform: translate(-50%);
-    background: var(--contrast-color);
-    width: 2rem;
-    height: 2rem;
-    line-height: 2rem;
-    border-radius: 100px;
-    color: var(--accent-color);
-    font-weight: 700;
-}
-
-.rel-container {
-    position: relative;
-}
-
-.timestamp {
-    width: 90px;
 }
 
 #mainSection {
@@ -202,68 +66,13 @@ a:active {
 }
 
 @media screen and (min-width: 768px) {
-    .trackList {
-        grid-auto-flow: column;
-        grid-template-rows: repeat(5, auto);
-        grid-template-columns: repeat(2, 49%);
-        justify-content: space-between;
-    }
 
     h2 {
         font-size: 24px;
     }
 }
 
-@media screen and (min-width: 1600px) {
-    .trackList {
-        grid-auto-flow: column;
-        grid-template-rows: repeat(2, auto);
-        grid-template-columns: repeat(5, 19%);
-        justify-content: space-between;
-    }
-
-    .scrollRow {
-        width: 100%;
-        margin: 0;
-    }
-
-    .artist-name,
-    .track-name {
-        font-size: 18px;
-    }
-
-    .track-artist {
-        font-size: 14px;
-    }
-
-    .artist-rank {
-        width: 3rem;
-        height: 3rem;
-        line-height: 3rem;
-        font-size: 20px;
-    }
-
-    .track-rank {
-        font-size: 20px;
-    }
-}
-
-@media screen and (min-width: 1920px) {
-    .scrollRow {
-        grid-template-rows: repeat(1, auto);
-    }
-}
-
 @media screen and (min-width: 2560px) {
-
-    .artist-name,
-    .track-name {
-        font-size: 20px;
-    }
-
-    .track-artist {
-        font-size: 16px;
-    }
 
     h1 {
         font-size: 64px;

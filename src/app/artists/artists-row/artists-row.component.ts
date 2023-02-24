@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { ArtistObject } from 'src/libs/openapi';
 
 @Component({
-  selector: 'app-artists-view',
+  selector: 'app-artists-row',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './artists-view.component.html',
-  styleUrls: ['./artists-view.component.scss']
+  templateUrl: './artists-row.component.html',
+  styleUrls: ['./artists-row.component.scss']
 })
-export class ArtistsViewComponent {
+export class ArtistsRowComponent {
 
   @Input() artists: ArtistObject[] = [];
   @Input() loadingState: "pending" | "loading" | "error" | "success" = "loading";
