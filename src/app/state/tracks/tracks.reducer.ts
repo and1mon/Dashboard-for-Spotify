@@ -33,19 +33,19 @@ export const tracksReducer = createReducer(
             case "short_term":
                 newState = {
                     ...newState,
-                    tracksShortTerm: [...state.tracksShortTerm, ...tracks],
+                    tracksShortTerm: tracks,
                 }
                 break;
             case "medium_term":
                 newState = {
                     ...newState,
-                    tracksMediumTerm: [...state.tracksMediumTerm, ...tracks],
+                    tracksMediumTerm: tracks,
                 }
                 break;
             case "long_term":
                 newState = {
                     ...newState,
-                    tracksLongTerm: [...state.tracksLongTerm, ...tracks],
+                    tracksLongTerm: tracks,
                 }
                 break;
         }
