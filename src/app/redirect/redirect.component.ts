@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-redirect',
@@ -28,7 +29,11 @@ export class RedirectComponent implements OnInit {
 
       let path = decodeURI(sessionStorage.getItem("path") || "");
 
-      if (path.includes("/redirect")) {
+      if (environment.production) {
+        path = path.replace(environment.basepath, "");
+      }
+
+      if (path.startsWith("/redirect")) {
         path = "";
       }
 
