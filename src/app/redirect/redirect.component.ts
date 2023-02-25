@@ -28,7 +28,7 @@ export class RedirectComponent implements OnInit {
 
       let path = decodeURI(sessionStorage.getItem("path") || "");
 
-      if (path.startsWith("/redirect")) {
+      if (path.endsWith("/redirect")) {
         path = "";
       }
 
