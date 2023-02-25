@@ -20,11 +20,11 @@ export class TracksEffects {
             ofType(loadTracks),
             withLatestFrom(this.store$),
             concatLatestFrom(([action, storeState]) => of(this.spotifyService.getOffsetTracks(action.timeRange, storeState))),
-            filter(([[action, storeState], offset]) => {
-                return action.amount - offset > 0;
-            }),
             mergeMap(([[action, storeState], offset]) => {
-                return this.spotifyService.getUserTopTracks(action.timeRange, action.amount - offset, offset).pipe(
+                if (action.amount - offset <= 0) {
+                    //Implement logic for loading data from store.
+                }
+                return this.spotifyService.getUserTopTracks(action.timeRange, action.amount).pipe(
                     map((fetchedTracks) =>
                         loadTracksSuccess({ tracks: fetchedTracks, timeRange: action.timeRange })
                     ),

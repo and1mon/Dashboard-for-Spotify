@@ -18,11 +18,11 @@ export class ArtistsEffects {
             ofType(loadArtists),
             withLatestFrom(this.store$),
             concatLatestFrom(([action, storeState]) => of(this.spotifyService.getOffsetArtists(action.timeRange, storeState))),
-            filter(([[action, storeState], offset]) => {
-                return action.amount - offset > 0;
-            }),
             mergeMap(([[action, storeState], offset]) => {
-                return this.spotifyService.getUserTopArtists(action.timeRange, action.amount - offset, offset).pipe(
+                if (action.amount - offset <= 0) {
+                    //Implement logic for loading data from store.
+                }
+                return this.spotifyService.getUserTopArtists(action.timeRange, action.amount).pipe(
                     map((fetchedArtists) =>
                         loadArtistsSuccess({ artists: fetchedArtists, timeRange: action.timeRange })
                     ),
