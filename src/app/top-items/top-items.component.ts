@@ -20,4 +20,9 @@ export class TopItemsComponent {
     this.router.navigate([], { queryParams: { timeRange: select.value } });
   }
 
+  public resetTimeRange() {
+    let select = document.getElementById("timeRangeSelect") as HTMLSelectElement;
+    select.selectedIndex = 0;
+  }
+
 }

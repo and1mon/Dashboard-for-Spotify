@@ -35,19 +35,19 @@ export const artistsReducer = createReducer(
             case "short_term":
                 newState = {
                     ...newState,
-                    artistsShortTerm: [...state.artistsShortTerm, ...artists],
+                    artistsShortTerm: artists,
                 }
                 break;
             case "medium_term":
                 newState = {
                     ...newState,
-                    artistsMediumTerm: [...state.artistsMediumTerm, ...artists],
+                    artistsMediumTerm: artists,
                 }
                 break;
             case "long_term":
                 newState = {
                     ...newState,
-                    artistsLongTerm: [...state.artistsLongTerm, ...artists],
+                    artistsLongTerm: artists,
                 }
                 break;
         }

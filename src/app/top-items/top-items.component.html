@@ -5,18 +5,18 @@
             matrixParams: 'ignored',
             paths: 'subset',
             queryParams: 'ignored'
-        }">Tracks</a>
+        }" (click)="resetTimeRange()">Tracks</a>
     <a [routerLink]="['artists']" [queryParams]="{timeRange: 'short_term'}" routerLinkActive="active_route"
         [routerLinkActiveOptions]="{
                 fragment: 'ignored',
                 matrixParams: 'ignored',
                 paths: 'subset',
                 queryParams: 'ignored'
-            }">Artists</a>
+            }" (click)="resetTimeRange()">Artists</a>
 </nav>
 
 <div class="center">
-    <select name="timeRangeSelect" (change)="selectTimeRange($event)">
+    <select name="timeRangeSelect" id="timeRangeSelect" (change)="selectTimeRange($event)">
         <option value="short_term">Last month</option>
         <option value="medium_term">6 months</option>
         <option value="long_term">All time</option>
