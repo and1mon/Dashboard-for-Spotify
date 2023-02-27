@@ -21,12 +21,6 @@ nav a {
     border: 1px solid transparent;
 }
 
-nav a:hover,
-nav a:active {
-    background-color: rgba(172, 255, 47, 0.161);
-    color: var(--accent-color);
-}
-
 select {
     display: none;
     appearance: none;
@@ -83,6 +77,13 @@ select:hover {
     color: var(--accent-color) !important;
     border-bottom: 1px solid yellowgreen !important;
     border-radius: 0 !important;
+}
+
+@media (hover: hover) {
+    nav a:hover {
+        background-color: rgba(172, 255, 47, 0.161);
+        color: var(--accent-color);
+    }
 }
 
 @media screen and (min-width: 768px) {
