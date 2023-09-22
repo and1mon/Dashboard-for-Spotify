@@ -28,6 +28,12 @@ img {
     align-items: center;
 }
 
+.disclaimer {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 8px;
+}
+
 @media screen and (min-width: 1600px) {
 
     p {
@@ -42,6 +48,12 @@ img {
 
     footer {
         padding-bottom: 18px;
+    }
+
+    .disclaimer {
+        margin-top: 1rem;
+        text-align: center;
+        font-size: 10px;
     }
 
 }
@@ -60,5 +72,11 @@ img {
 
     footer {
         padding-bottom: 24px;
+    }
+
+    .disclaimer {
+        margin-top: 1rem;
+        text-align: center;
+        font-size: 12px;
     }
 }
