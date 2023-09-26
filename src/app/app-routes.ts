@@ -8,6 +8,7 @@ import { HistoryEffects } from './state/history/history.effects';
 import { ArtistsComponent } from './artists/artists.component';
 import { TracksComponent } from './tracks/tracks.component';
 import { HistoryPageComponent } from './history-page/history-page.component';
+import { AboutComponent } from './about/about.component';
 
 export const ROUTES: Routes = [
   {
@@ -49,4 +50,8 @@ export const ROUTES: Routes = [
     loadComponent: () => import('./top-items/top-items.component').then(mod => mod.TopItemsComponent),
     providers: [provideEffects(ArtistsEffects, TracksEffects)],
   },
+  {
+    path: "about",
+    component: AboutComponent
+  }
 ];

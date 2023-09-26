@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn = false;
   navbarIsOpen = false;
+  isBannerClosed = false;
 
   constructor(private oauth: OAuthService) { }
 
@@ -40,6 +41,10 @@ export class HeaderComponent implements OnInit {
 
   public isOpen() {
     return this.navbarIsOpen;
+  }
+
+  public closeBanner() {
+    this.isBannerClosed = true;
   }
 
 }

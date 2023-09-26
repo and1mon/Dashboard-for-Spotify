@@ -1,34 +1,36 @@
-<nav class="nav-top">
-    <a [routerLink]="['tracks']" [queryParams]="{timeRange: 'short_term'}" routerLinkActive="active_route"
-        [routerLinkActiveOptions]="{
-            fragment: 'ignored',
-            matrixParams: 'ignored',
-            paths: 'subset',
-            queryParams: 'ignored'
-        }" (click)="resetTimeRange()">Tracks</a>
-    <a [routerLink]="['artists']" [queryParams]="{timeRange: 'short_term'}" routerLinkActive="active_route"
-        [routerLinkActiveOptions]="{
+<div class="relative">
+    <nav class="nav-top">
+        <a [routerLink]="['tracks']" [queryParams]="{timeRange: 'short_term'}" routerLinkActive="active_route"
+            [routerLinkActiveOptions]="{
                 fragment: 'ignored',
                 matrixParams: 'ignored',
                 paths: 'subset',
                 queryParams: 'ignored'
-            }" (click)="resetTimeRange()">Artists</a>
-</nav>
+            }" (click)="resetTimeRange()">Tracks</a>
+        <a [routerLink]="['artists']" [queryParams]="{timeRange: 'short_term'}" routerLinkActive="active_route"
+            [routerLinkActiveOptions]="{
+                    fragment: 'ignored',
+                    matrixParams: 'ignored',
+                    paths: 'subset',
+                    queryParams: 'ignored'
+                }" (click)="resetTimeRange()">Artists</a>
+    </nav>
 
-<div class="center">
-    <select name="timeRangeSelect" id="timeRangeSelect" (change)="selectTimeRange($event)">
-        <option value="short_term">Last month</option>
-        <option value="medium_term">6 months</option>
-        <option value="long_term">All time</option>
-    </select>
+    <div class="dropdown">
+        <select name="timeRangeSelect" id="timeRangeSelect" (change)="selectTimeRange($event)">
+            <option value="short_term">Last month</option>
+            <option value="medium_term">6 months</option>
+            <option value="long_term">All time</option>
+        </select>
+    </div>
+
+
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+    <nav class="nav-bottom">
+        <a [routerLink]="[]" [queryParams]="{timeRange: 'short_term'}" routerLinkActive="active_route">Last month</a>
+        <a [routerLink]="[]" [queryParams]="{timeRange: 'medium_term'}" routerLinkActive="active_route">6 months</a>
+        <a [routerLink]="[]" [queryParams]="{timeRange: 'long_term'}" routerLinkActive="active_route">All time</a>
+    </nav>
 </div>
-
-
-<main>
-    <router-outlet></router-outlet>
-</main>
-<nav class="nav-bottom">
-    <a [routerLink]="[]" [queryParams]="{timeRange: 'short_term'}" routerLinkActive="active_route">Last month</a>
-    <a [routerLink]="[]" [queryParams]="{timeRange: 'medium_term'}" routerLinkActive="active_route">6 months</a>
-    <a [routerLink]="[]" [queryParams]="{timeRange: 'long_term'}" routerLinkActive="active_route">All time</a>
-</nav>

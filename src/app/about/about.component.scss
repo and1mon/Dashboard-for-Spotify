@@ -1,0 +1,39 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent-color);
+    padding: 8px 16px;
+    border: 1px solid transparent;
+}
+
+@media screen and (min-width: 1600px) {
+
+    p {
+        font-size: 18px;
+        padding: 0 128px;
+    }
+
+    a {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 2560px) {
+
+    p {
+        font-size: 20px;
+    }
+
+    a {
+        font-size: 24px;
+    }
+
+}
