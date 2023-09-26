@@ -17,6 +17,7 @@ import { artistsReducer } from './app/state/artists/artists.reducer';
 import { tracksReducer } from './app/state/tracks/tracks.reducer';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { historyReducer } from './app/state/history/history.reducer';
+import { AuthenticationGuard } from './app/authentication.guard';
 
 const initializeOAuth = (oauthService: OAuthService, router: Router) => () => {
   return new Promise(resolve => {
@@ -72,5 +73,6 @@ bootstrapApplication(AppComponent, {
     provideHttpClient(),
     provideOAuthClient(),
     provideRouter(ROUTES),
+    AuthenticationGuard
   ]
 });
