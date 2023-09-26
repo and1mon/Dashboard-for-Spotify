@@ -44,13 +44,16 @@ select:hover {
     color: var(--accent-color);
 }
 
-.center {
+.dropdown {
     display: flex;
     justify-content: center;
     position: absolute;
-    top: 142px;
+    top: 72px;
     left: 8px;
+}
 
+.relative {
+    position: relative;
 }
 
 .nav-top {

@@ -21,3 +21,12 @@
         </nav>
     </div>
 </header>
+<div id="disclaimer" *ngIf="!isBannerClosed">
+    <p>DISCLAIMER: This page was made as a personal educational project.</p>
+    <div id="disclaimer-btns">
+        <a routerLink="about" (click)="closeBanner()">
+            Read more
+        </a>
+        <button (click)="closeBanner()">Dismiss</button>
+    </div>
+</div>

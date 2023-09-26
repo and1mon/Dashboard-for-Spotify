@@ -142,6 +142,46 @@ nav a:hover {
     height: 60px;
 }
 
+#disclaimer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--accent-color);
+    width: 100%;
+    color: black;
+    text-align: center;
+}
+
+#disclaimer p {
+    font-weight: 700;
+}
+
+#disclaimer a {
+    color: black;
+}
+
+#disclaimer button {
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(44, 44, 46);
+    color: #e6e6e6;
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+#disclaimer-btns {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding-bottom: 0.5rem;
+}
+
+#disclaimer button:hover {
+    background-color: rgba(44, 44, 46, 0.808);
+    cursor: pointer;
+}
+
 @media screen and (min-width: 768px) {
     nav {
         position: relative;
@@ -184,6 +224,15 @@ nav a:hover {
 
     #header-container {
         height: 70px;
+    }
+
+    #disclaimer {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    #disclaimer-btns {
+        padding-bottom: 0;
     }
 }
 
