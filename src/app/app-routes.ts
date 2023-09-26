@@ -9,6 +9,7 @@ import { ArtistsComponent } from './artists/artists.component';
 import { TracksComponent } from './tracks/tracks.component';
 import { HistoryPageComponent } from './history-page/history-page.component';
 import { AboutComponent } from './about/about.component';
+import { AuthenticationGuard } from './authentication.guard';
 
 export const ROUTES: Routes = [
   {
@@ -24,11 +25,13 @@ export const ROUTES: Routes = [
     path: "home",
     loadComponent: () => import('./home/home.component').then(mod => mod.HomeComponent),
     providers: [provideEffects(ArtistsEffects, TracksEffects, HistoryEffects)],
+    canActivate: [AuthenticationGuard]
   },
   {
     path: "history",
     loadComponent: () => import('./history-page/history-page.component').then(mod => mod.HistoryPageComponent),
     providers: [provideEffects(HistoryEffects)],
+    canActivate: [AuthenticationGuard]
   },
   {
     path: "top",
@@ -49,6 +52,7 @@ export const ROUTES: Routes = [
     ],
     loadComponent: () => import('./top-items/top-items.component').then(mod => mod.TopItemsComponent),
     providers: [provideEffects(ArtistsEffects, TracksEffects)],
+    canActivate: [AuthenticationGuard]
   },
   {
     path: "about",
