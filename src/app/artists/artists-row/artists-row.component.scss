@@ -2,6 +2,11 @@ p {
     margin: auto 0;
 }
 
+img {
+    object-fit: cover;
+    margin-bottom: auto;
+}
+
 .scrollRow {
     display: grid;
     grid-auto-columns: minmax(120px, 35%);
